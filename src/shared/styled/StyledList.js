@@ -10,5 +10,8 @@ export default styled(List)`
     border: 1px solid black !important;
     margin-bottom: 10px;
     cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
   }
 `

@@ -5,9 +5,11 @@ import tagStyled from 'styled-components'
 
 import { ListItem } from '@mui/material'
 import { StyledList } from 'src/shared/styled'
+import { CloseOutlined } from '@mui/icons-material'
+import { IconButton } from '@mui/material'
 
 const WorkList = () => {
-  const { workList } = useWorkList()
+  const { workList, removeWorkReg } = useWorkList()
 
   const theme = useTheme()
 
@@ -15,7 +17,12 @@ const WorkList = () => {
     <WorkListMain theme={theme}>
       <StyledList>
         {workList.map((item, index) => (
-          <ListItem key={index}>{item}</ListItem>
+          <ListItem key={index}>
+            {item}
+            <IconButton onClick={() => removeWorkReg(index)} color="error">
+              <CloseOutlined />
+            </IconButton>
+          </ListItem>
         ))}
       </StyledList>
     </WorkListMain>
