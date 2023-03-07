@@ -1,9 +1,9 @@
-import * as React from 'react' ;
+import * as React from 'react'
 
-import Main from './pages/Main';
+import Main from './pages/Main'
 
-import { ThemeModeProvider } from './shared/hooks/useThemeMode';
-import { WorkListProvider } from './shared/hooks/useWorkList';
+import { ThemeModeProvider } from './shared/hooks/useThemeMode'
+import { WorkListProvider } from './shared/hooks/useWorkList'
 
 const App = () => {
   return (
@@ -15,4 +15,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App

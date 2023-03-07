@@ -1,5 +1,5 @@
 const ActionTypes = {
-    ConnectRedux : "ConnectRedux"
+  ConnectRedux: 'ConnectRedux'
 }
 
-export default ActionTypes ;
+export default ActionTypes

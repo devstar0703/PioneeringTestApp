@@ -1,6 +1,6 @@
-import tagStyled from 'styled-components' ;
+import tagStyled from 'styled-components'
 
-import { List, styled } from '@mui/material';
+import { List, styled } from '@mui/material'
 
 export const ExpandLogoDiv = tagStyled.div`
     margin-top : 30px;
@@ -50,12 +50,11 @@ export const LessLogo = tagStyled.div`
 `
 
 export const MenuList = styled(List)`
-    & .MuiListItemButton-root {
-
-        margin : 5px;
-        border-radius : 10px !important;
-        &:hover {
-            background-color : gray;
-        }
+  & .MuiListItemButton-root {
+    margin: 5px;
+    border-radius: 10px !important;
+    &:hover {
+      background-color: gray;
     }
+  }
 `

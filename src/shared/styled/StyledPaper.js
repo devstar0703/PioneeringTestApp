@@ -1,25 +1,23 @@
-import {
-    Paper, styled,
-} from '@mui/material';
+import { Paper, styled } from '@mui/material'
 
 export default styled(Paper)`
-    border-radius : 10px;
-    border : 1px solid gray;
-    
-    & .MuiDialogContent-root {
-        position : relative;
+  border-radius: 10px;
+  border: 1px solid gray;
 
-        display : flex;
-        flex-direction : column;
-        align-items : center;
+  & .MuiDialogContent-root {
+    position: relative;
 
-        padding : 20px 20px 20px 20px !important;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    & .MuiDialogTitle-root {
-    }
+    padding: 20px 20px 20px 20px !important;
+  }
 
-    & .MuiDialogActions-root {
-        padding : 10px;
-    }
+  & .MuiDialogTitle-root {
+  }
+
+  & .MuiDialogActions-root {
+    padding: 10px;
+  }
 `

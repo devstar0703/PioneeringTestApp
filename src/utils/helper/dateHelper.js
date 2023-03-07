@@ -1,5 +1,5 @@
 export const getCurrentDate = () => {
-    let current_date = new Date();
+  let current_date = new Date()
 
-    return current_date.toLocaleString();
+  return current_date.toLocaleString()
 }

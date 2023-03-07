@@ -1,1 +1,1 @@
-export { default as alertErrorMessage } from './alertError';
+export { default as alertErrorMessage } from './alertError'

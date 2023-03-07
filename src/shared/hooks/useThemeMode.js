@@ -1,56 +1,52 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { useLocalStorage } from 'react-use';
+import { useLocalStorage } from 'react-use'
 
-import { darkMode, lightMode } from 'src/utils/theme'; 
+import { darkMode, lightMode } from 'src/utils/theme'
 
-const RouteContext = React.createContext({});
+const RouteContext = React.createContext({})
 
 export const ThemeModeProvider = ({ children }) => {
-    const [themeMode, setSelectThemeMode] = React.useState(lightMode) ;
-    const [themeTemp, setThemeTemp] = useLocalStorage('theme_mode', 'light');
-    const [barMode, setBarMode] = useLocalStorage('bar_mode', 'expanded');
+  const [themeMode, setSelectThemeMode] = React.useState(lightMode)
+  const [themeTemp, setThemeTemp] = useLocalStorage('theme_mode', 'light')
+  const [barMode, setBarMode] = useLocalStorage('bar_mode', 'expanded')
 
-    const provider = {
-        themeMode,
-        themeTemp,
-        barMode,
+  const provider = {
+    themeMode,
+    themeTemp,
+    barMode,
 
-        onChangeThemeMode: (themeMode) => {
-            if(themeMode === 'light') {
-                setSelectThemeMode(lightMode);
-                setThemeTemp('light')
-            }
-            if(themeMode === 'dark') {
-                setSelectThemeMode(darkMode);
-                setThemeTemp('dark')
-            }
-        },
+    onChangeThemeMode: (themeMode) => {
+      if (themeMode === 'light') {
+        setSelectThemeMode(lightMode)
+        setThemeTemp('light')
+      }
+      if (themeMode === 'dark') {
+        setSelectThemeMode(darkMode)
+        setThemeTemp('dark')
+      }
+    },
 
-        onChangeBarMode: (barMode) => {
-            setBarMode(barMode)
-        }
-    };
+    onChangeBarMode: (barMode) => {
+      setBarMode(barMode)
+    }
+  }
 
-    React.useEffect(() => {
-        if(themeTemp === 'light') {
-            setSelectThemeMode(lightMode);
-            setThemeTemp('light')
-        }
-        if(themeTemp === 'dark') {
-            setSelectThemeMode(darkMode);
-            setThemeTemp('dark')
-        }
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [themeTemp]);
+  React.useEffect(() => {
+    if (themeTemp === 'light') {
+      setSelectThemeMode(lightMode)
+      setThemeTemp('light')
+    }
+    if (themeTemp === 'dark') {
+      setSelectThemeMode(darkMode)
+      setThemeTemp('dark')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [themeTemp])
 
-    return (
-        <RouteContext.Provider value={provider}>
-            {children}
-        </RouteContext.Provider>
-    );
-};
+  return <RouteContext.Provider value={provider}>{children}</RouteContext.Provider>
+}
 
-const useThemeMode = () => React.useContext(RouteContext);
+const useThemeMode = () => React.useContext(RouteContext)
 
-export default useThemeMode;
+export default useThemeMode

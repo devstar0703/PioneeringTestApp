@@ -1,44 +1,40 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { useLocalStorage } from 'react-use';
-import { getCurrentDate } from 'src/utils/helper/dateHelper';
+import { useLocalStorage } from 'react-use'
+import { getCurrentDate } from 'src/utils/helper/dateHelper'
 
-const RouteContext = React.createContext({});
+const RouteContext = React.createContext({})
 
 export const WorkListProvider = ({ children }) => {
-    const [workList, setWorkList] = useLocalStorage('work_list', []);
-    const [countOfBtn, setCountOfBtn] = useLocalStorage('count_btn', "0");
+  const [workList, setWorkList] = useLocalStorage('work_list', [])
+  const [countOfBtn, setCountOfBtn] = useLocalStorage('count_btn', '0')
 
-    const provider = {
-        workList,
-        countOfBtn,
+  const provider = {
+    workList,
+    countOfBtn,
 
-        pushWorkReg: (detail) => {
-            let tempWorkList = [...workList];
-            tempWorkList.push(`${getCurrentDate()} ${detail}`);
+    pushWorkReg: (detail) => {
+      let tempWorkList = [...workList]
+      tempWorkList.push(`${getCurrentDate()} ${detail}`)
 
-            setWorkList([...tempWorkList]);
-        },
+      setWorkList([...tempWorkList])
+    },
 
-        removeWorkReg: (index) => {
-            let tempWorkList = [...workList];
-            tempWorkList.splice(index, 1);
+    removeWorkReg: (index) => {
+      let tempWorkList = [...workList]
+      tempWorkList.splice(index, 1)
 
-            setWorkList([...tempWorkList]);
-        },
+      setWorkList([...tempWorkList])
+    },
 
-        changeCountofBtn: () => {
-            setCountOfBtn(Number(countOfBtn) + 1);
-        }
-    };
+    changeCountofBtn: () => {
+      setCountOfBtn(Number(countOfBtn) + 1)
+    }
+  }
 
-    return (
-        <RouteContext.Provider value={provider}>
-            {children}
-        </RouteContext.Provider>
-    );
-};
+  return <RouteContext.Provider value={provider}>{children}</RouteContext.Provider>
+}
 
-const useWorkList = () => React.useContext(RouteContext);
+const useWorkList = () => React.useContext(RouteContext)
 
-export default useWorkList;
+export default useWorkList
