@@ -17,6 +17,10 @@ export const ContentView = tagStyled.div`
     padding-right : 30px;
 
     min-height : calc(100vh - ${props => props.theme.layout.header}px);
+
+    @media screen and (max-width: 450px) {
+        padding : 10px;
+    }
 `
 
 export const ContentBodyMain = tagStyled.div`

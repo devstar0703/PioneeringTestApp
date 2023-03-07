@@ -35,4 +35,16 @@ export default WorkList;
 const WorkListMain = tagStyled.div`
     color: ${props => props.theme.palette.primary.content} !important;
     width: 400px;
+
+    @media screen and (max-width: 485px) {
+        width : 350px;
+    }
+
+    @media screen and (max-width: 370px) {
+        width : 300px;
+    }
+
+    @media screen and (max-width: 315px) {
+        width : 250px;
+    }
 `

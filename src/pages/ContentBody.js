@@ -8,29 +8,18 @@ import { useTheme } from '@mui/styles';
 import SideBar from 'src/components/Layouts/SideBar';
 
 import { ContentBodyMain, ContentView } from './styled/TestApp.styled';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPager, faMobile } from '@fortawesome/free-solid-svg-icons';
+import { useMediaQuery } from '@mui/material';
 
 const PageOne = React.lazy(() => import('src/components/ContentBody/PageOne')) ;
 const PageTwo = React.lazy(() => import('src/components/ContentBody/PageTwo')) ;
 
 const ContentBody = (props) => {
-
-    const menuList = [
-        {
-          label : "Page 1",
-          icon : <FontAwesomeIcon icon={faPager}/>,
-          link : "/page-one"
-        },
-        {
-          label : "Page 2",
-          icon : <FontAwesomeIcon icon={faMobile}/>,
-          link : "/page-two"
-        }
-    ]
-
+    const {
+        menuList
+    } = props;
+    
     const theme = useTheme();
+    const match450 = useMediaQuery('(min-width: 450px)');
 
     const [open, setOpen] = React.useState(true);
     const sideMenuCtrl = React.useRef() ;
@@ -45,11 +34,11 @@ const ContentBody = (props) => {
     return (
         <ContentBodyMain>
             <div ref={sideMenuCtrl}>
-                <SideBar 
+                { match450 && <SideBar 
                     open={open}
                     setOpen={setOpen}
                     menuList={menuList}
-                />
+                /> }
             </div>
             <ContentView
                 width={width}

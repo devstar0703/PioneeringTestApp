@@ -14,6 +14,7 @@ import {
     Divider,
     Drawer as MuiDrawer,
     Tooltip,
+    useMediaQuery,
 } from '@mui/material' ;
 
 import LogoImage from 'src/assets/logo.png' ;
@@ -22,6 +23,7 @@ import { styled } from '@mui/material/styles' ;
 import { ExpandLogo, ExpandLogoDiv, LessLogo, LessLogoDiv, Logo, MenuList } from './styled/SideMenu.styled';
 
 import { openedMixin, closedMixin } from 'src/utils/helper/mixinHelper';
+import MobileMenu from './MobileMenu';
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -58,9 +60,12 @@ const SideBar = (props) => {
     const theme = useTheme();
     const location = useLocation() ;
 
+    const match680 = useMediaQuery('(min-width : 680px)');
+    
     const [selectedTab, setSelectedTab] = React.useState(1) ;
-
     const handleDrawerOpen = () => {
+        if(!match680) return ;
+
         onChangeBarMode('expanded');
         setOpen(true);
     };
@@ -85,6 +90,17 @@ const SideBar = (props) => {
         else setOpen(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [barMode]);
+
+    React.useEffect(() => {
+        if(!match680) {
+            setOpen(false);
+            onChangeBarMode('closed');
+        }
+        else {
+            if(barMode === 'expanded') setOpen(true);
+            else setOpen(false);
+        }
+    }, [match680]);
 
     return ( 
         <>
