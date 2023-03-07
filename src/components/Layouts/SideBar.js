@@ -99,6 +99,7 @@ const SideBar = (props) => {
             if(barMode === 'expanded') setOpen(true);
             else setOpen(false);
         }
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [match680]);
 
     return ( 
