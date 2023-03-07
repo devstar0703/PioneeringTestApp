@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useLocalStorage } from 'react-use'
 import { getCurrentDate } from 'src/utils/helper/dateHelper'
 
-const RouteContext = React.createContext({})
+const WorkListContext = React.createContext({})
 
 export const WorkListProvider = ({ children }) => {
   const [workList, setWorkList] = useLocalStorage('work_list', [])
@@ -32,9 +32,9 @@ export const WorkListProvider = ({ children }) => {
     }
   }
 
-  return <RouteContext.Provider value={provider}>{children}</RouteContext.Provider>
+  return <WorkListContext.Provider value={provider}>{children}</WorkListContext.Provider>
 }
 
-const useWorkList = () => React.useContext(RouteContext)
+const useWorkList = () => React.useContext(WorkListContext)
 
 export default useWorkList

@@ -4,7 +4,7 @@ import { useLocalStorage } from 'react-use'
 
 import { darkMode, lightMode } from 'src/utils/theme'
 
-const RouteContext = React.createContext({})
+const ThemeModeContext = React.createContext({})
 
 export const ThemeModeProvider = ({ children }) => {
   const [themeMode, setSelectThemeMode] = React.useState(lightMode)
@@ -44,9 +44,9 @@ export const ThemeModeProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [themeTemp])
 
-  return <RouteContext.Provider value={provider}>{children}</RouteContext.Provider>
+  return <ThemeModeContext.Provider value={provider}>{children}</ThemeModeContext.Provider>
 }
 
-const useThemeMode = () => React.useContext(RouteContext)
+const useThemeMode = () => React.useContext(ThemeModeContext)
 
 export default useThemeMode
