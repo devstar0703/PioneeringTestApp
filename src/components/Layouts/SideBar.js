@@ -23,7 +23,6 @@ import { styled } from '@mui/material/styles' ;
 import { ExpandLogo, ExpandLogoDiv, LessLogo, LessLogoDiv, Logo, MenuList } from './styled/SideMenu.styled';
 
 import { openedMixin, closedMixin } from 'src/utils/helper/mixinHelper';
-import MobileMenu from './MobileMenu';
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
