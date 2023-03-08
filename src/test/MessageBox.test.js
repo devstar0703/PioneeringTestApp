@@ -1,4 +1,4 @@
-import MessageBox from './MessageBox'
+import MessageBox from 'src/components/ContentBody/PageOne/MessageBox'
 import { render, fireEvent, cleanup } from '@testing-library/react'
 import { ThemeProvider, CssBaseline } from '@mui/material'
 import { darkMode } from 'src/utils/theme'
