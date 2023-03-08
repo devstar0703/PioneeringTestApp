@@ -1,7 +1,7 @@
 export interface ThemeModeProps {
   themeTemp: string
   barMode: string
-  themeMode: string
+  themeMode: any
   onChangeBarMode: (barMode: string) => void
   onChangeThemeMode: (themeMode: string) => void
 }

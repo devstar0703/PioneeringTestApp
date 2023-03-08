@@ -6,9 +6,6 @@ export default makeStyles((theme: any) => createStyles({
   sideMenuPaper: {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     backgroundColor: `${theme.custom.palette.background.left} !important`,
-    '& svg': {
-      color: 'white !important'
-    },
     display: 'flex !important',
     flexDirection: 'column',
     justifyContent: 'space-between !important'

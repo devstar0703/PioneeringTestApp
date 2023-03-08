@@ -164,7 +164,9 @@ const SideBar = ({
                       sx={{
                         minWidth: 0,
                         mr: open ? 3 : 'auto',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                        color: `${theme.custom.palette.primary.left}`
                       }}
                     >
                       {menu.icon}
