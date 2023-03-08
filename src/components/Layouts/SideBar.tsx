@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { createStyles, useTheme } from '@mui/styles'
 import useThemeMode from 'src/shared/hooks/useThemeMode'
 import useStyles from 'src/shared/hooks/useStyles'
+import { useQueryClient } from '@tanstack/react-query'
 
 import {
   List,
@@ -31,8 +32,10 @@ import {
 } from './styled/SideMenu.styled'
 
 import { openedMixin, closedMixin } from 'src/utils/helper/mixinHelper'
-import { type ThemeModeProps } from 'src/types/hooks.types'
+import { type WorkListProps, type ThemeModeProps } from 'src/types/hooks.types'
 import { type IMenuItem } from 'src/types/types'
+import { StyledButton } from 'src/shared/styled'
+import useWorkList from 'src/shared/hooks/useWorkList'
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }: any) => createStyles({
@@ -65,6 +68,8 @@ const SideBar = ({
   menuList
 }: SideBarProps) => {
   const { barMode, onChangeBarMode } = useThemeMode() as ThemeModeProps
+  const queryClient = useQueryClient()
+  const { clearStorage } = useWorkList() as WorkListProps
 
   const navigate = useNavigate()
 
@@ -87,6 +92,10 @@ const SideBar = ({
     onChangeBarMode('closed')
   }
 
+  const clearAll = () => {
+    clearStorage()
+    queryClient.invalidateQueries({ queryKey: ['getWorkList'] })
+  }
   React.useEffect(() => {
     // eslint-disable-next-line array-callback-return
     menuList.map((menu, index) => {
@@ -184,6 +193,11 @@ const SideBar = ({
                 </Tooltip>
               ))}
             </MenuList>
+            <List>
+              <ListItem>
+                <StyledButton onClick={clearAll}>Clear Storage</StyledButton>
+              </ListItem>
+            </List>
           </div>
         </Drawer>
       }

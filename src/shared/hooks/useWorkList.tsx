@@ -38,6 +38,11 @@ export const WorkListProvider = ({ children }: WorkListProviderProps) => {
 
     changeCountofBtn: () => {
       setCountOfBtn(Number(countOfBtn) + 1)
+    },
+
+    clearStorage: () => {
+      setWorkList([])
+      setCountOfBtn('0')
     }
   }
 
