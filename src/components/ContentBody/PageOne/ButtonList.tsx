@@ -27,13 +27,15 @@ const ButtonList = () => {
   }
 
   return (
-    <ButtonListMain>
+    <ButtonListMain
+      data-testid='button_list_main'
+    >
       {[...Array(Number(countOfBtn))].map((item, index) => (
         <StyledButton key={index} onClick={() => { clickButton(index) }}>
           Button {index + 1}
         </StyledButton>
       ))}
-      <StyledButton onClick={addButton}>Add Button {Number(countOfBtn) + 1}</StyledButton>
+      <StyledButton onClick={addButton} data-testid='add_button'>Add Button {Number(countOfBtn) + 1}</StyledButton>
     </ButtonListMain>
   )
 }
