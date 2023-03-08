@@ -27,13 +27,12 @@ afterEach(() => {
 })
 
 // eslint-disable-next-line no-undef
-test('Test without removing characters', () => {
+test('Test without enable/disable effect of sent button', () => {
   const { getByTestId } = renderApp()
 
   const textarea = getByTestId(testIds.textarea)
   const sentbutton = getByTestId(testIds.sentbutton)
 
-  console.log(textarea, sentbutton)
   fireEvent.change(textarea.children[0].children[0], { target: { value: 'aaaaa' } })
   // eslint-disable-next-line no-undef
   expect(sentbutton).toBeEnabled()

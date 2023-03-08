@@ -17,7 +17,9 @@ const ThemeSelector = () => {
   }
   return (
     <ThemeSelectorMain>
-      <StyledButton onClick={handleChangeThemeMode}>{`Set ${
+      <StyledButton onClick={handleChangeThemeMode}
+        data-testid='select_theme_btn'
+      >{`Set ${
         themeTemp === 'light' ? 'Dark' : 'Light'
       } Theme`}</StyledButton>
     </ThemeSelectorMain>
