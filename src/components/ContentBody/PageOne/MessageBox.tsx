@@ -20,8 +20,10 @@ const MessageBox = () => {
 
   return (
     <MessageBoxMain>
-      <StyledTextField multiline value={text} onChange={(e) => { setText(e.target.value) }} />
-      <StyledButton disabled={!text} onClick={messageSent}>
+      <StyledTextField multiline value={text} onChange={(e) => { setText(e.target.value) }} data-testid="textarea"/>
+      <StyledButton disabled={!text} onClick={messageSent}
+        data-testid='sentbutton'
+      >
         {' '}
         Message Sent{' '}
       </StyledButton>
