@@ -101,23 +101,15 @@ const WorkList = () => {
                     <div ref={observerElem}>
                         {!isFetchingNextPage
                           ? (
-                              'Load more news...'
+                              'Load more work items...'
                             )
                           : (
                             <React.Fragment>
-                            Loading news...
+                              Loading work items...
                             </React.Fragment>
                             )}
                     </div>
             )}
-        {/* {workList.map((item: any, index: number) => (
-          <ListItem key={index}>
-            {item}
-            <IconButton onClick={() => { removeWorkReg(index) }} color="error">
-              <CloseOutlined />
-            </IconButton>
-          </ListItem>
-        ))} */}
       </StyledList>
     </WorkListMain>
   )

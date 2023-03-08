@@ -96,6 +96,7 @@ const SideBar = ({
     clearStorage()
     queryClient.invalidateQueries({ queryKey: ['getWorkList'] })
   }
+
   React.useEffect(() => {
     // eslint-disable-next-line array-callback-return
     menuList.map((menu, index) => {
