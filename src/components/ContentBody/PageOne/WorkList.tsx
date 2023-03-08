@@ -39,7 +39,6 @@ const WorkList = () => {
     ({ pageParam = 0 }) => fecthWorkList(pageParam),
     {
       getNextPageParam: (lastPage: any, allPages: any) => {
-        console.log(allPages)
         const nextPage: number = allPages.length
         return lastPage.result.length === limit ? nextPage : undefined
       }
@@ -68,13 +67,8 @@ const WorkList = () => {
   }, [fetchNextPage, hasNextPage, handleObserver])
 
   React.useEffect(() => {
-    console.log(workList)
     refetch()
   }, [workList])
-
-  React.useEffect(() => {
-    console.log(data)
-  }, [data])
 
   return (
     <WorkListMain theme={theme}>

@@ -23,8 +23,6 @@ export const WorkListProvider = ({ children }: WorkListProviderProps) => {
         const tempWorkList: any = [...workList]
         tempWorkList.push(`${getCurrentDate()} ${detail}`)
 
-        console.log(tempWorkList)
-
         setWorkList([...tempWorkList])
       }
     },

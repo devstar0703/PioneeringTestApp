@@ -10,6 +10,5 @@ export const ConnectWallet = (role: string) => async (dispatch: AppDispatch) => 
       }
     })
   } catch (err) {
-    console.log(err)
   }
 }
