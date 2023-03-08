@@ -20,10 +20,9 @@ const WorkList = () => {
   const theme = useTheme()
 
   const fecthWorkList = async (page: number) => {
-    const data = await workList.slice(page - 1, page + limit - 1)
-
+    const data = await workList.slice(page * limit, page * limit + limit)
     return {
-      result: data
+      result: [...data]
     }
   }
 
@@ -37,10 +36,11 @@ const WorkList = () => {
   } = useInfiniteQuery(
     ['getWorkList'],
     // eslint-disable-next-line @typescript-eslint/promise-function-async
-    ({ pageParam = 1 }) => fecthWorkList(pageParam),
+    ({ pageParam = 0 }) => fecthWorkList(pageParam),
     {
       getNextPageParam: (lastPage: any, allPages: any) => {
-        const nextPage: number = allPages.length + 1
+        console.log(allPages)
+        const nextPage: number = allPages.length
         return lastPage.result.length === limit ? nextPage : undefined
       }
     }
@@ -49,7 +49,6 @@ const WorkList = () => {
   const handleObserver = React.useCallback(
     (entries: IntersectionObserverEntry[]) => {
       // eslint-disable-next-line no-console
-      console.log('here')
       const [target] = entries
       if (target.isIntersecting && hasNextPage) {
         fetchNextPage()
@@ -69,8 +68,13 @@ const WorkList = () => {
   }, [fetchNextPage, hasNextPage, handleObserver])
 
   React.useEffect(() => {
+    console.log(workList)
     refetch()
   }, [workList])
+
+  React.useEffect(() => {
+    console.log(data)
+  }, [data])
 
   return (
     <WorkListMain theme={theme}>
@@ -80,7 +84,7 @@ const WorkList = () => {
             data &&
             data.pages &&
             data.pages.map(
-              (page: any, pageIndex: number) =>
+              (page: any) =>
                 // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
                 page &&
                 page.result &&
@@ -120,7 +124,11 @@ export default WorkList
 const WorkListMain = tagStyled.div`
     color: ${(props) => props.theme.custom.palette.primary.content} !important;
     width: 400px;
-    max-height : 500px;
+    max-height : 600px;
+    border : 1px solid black;
+    border-radius : 5px;
+
+    padding : 5px;
 
     overflow-y : auto;
 

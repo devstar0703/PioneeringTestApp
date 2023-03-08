@@ -1,4 +1,5 @@
 import useWorkList from 'src/shared/hooks/useWorkList'
+import { useQueryClient } from '@tanstack/react-query'
 
 import tagStyled from 'styled-components'
 import { StyledButton } from 'src/shared/styled'
@@ -13,9 +14,12 @@ const ButtonList = () => {
     changeCountofBtn
   } = useWorkList() as WorkListProps
 
+  const queryClient = useQueryClient()
+
   const addButton = () => {
     pushWorkReg(`Button ${Number(countOfBtn) + 1} was added.`)
     changeCountofBtn()
+    queryClient.invalidateQueries({ queryKey: ['getWorkList'] })
   }
 
   const clickButton = (index: number) => {
